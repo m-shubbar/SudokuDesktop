@@ -1,13 +1,17 @@
 package ca.shubbar.gamebox;
 
+import java.io.Serializable;
+
 /**
  * @author Mustafa <codingbox@outlook.com>
  * Created at 2021-08-02
  */
-public class SudokuGame {
+
+// We want to read/write this game file to OS
+public class SudokuGame implements Serializable {
     private final GameState gameState;
     private final int[][] gridState;
-    public final static GRID_BOUNDARY = 9;
+    public final static int GRID_BOUNDARY = 9;
 
     public SudokuGame(GameState gameState, int[][] gridState) {
         this.gameState = gameState;
