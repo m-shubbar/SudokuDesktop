@@ -1,5 +1,6 @@
 package ca.shubbar.gamebox;
 
+import ca.shubbar.computationlogic.SudokuUtilities;
 import ca.shubbar.constants.GameState;
 
 import java.io.Serializable;
