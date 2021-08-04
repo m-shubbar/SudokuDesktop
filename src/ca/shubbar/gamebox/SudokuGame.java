@@ -1,5 +1,7 @@
 package ca.shubbar.gamebox;
 
+import ca.shubbar.constants.GameState;
+
 import java.io.Serializable;
 
 /**
