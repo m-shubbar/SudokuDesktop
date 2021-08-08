@@ -1,6 +1,8 @@
 package ca.shubbar;
 
+import ca.shubbar.buildlogic.SudokuBuildLogic;
 import ca.shubbar.userinterface.IUserInterfaceContract;
+import ca.shubbar.userinterface.UserInterfaceImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

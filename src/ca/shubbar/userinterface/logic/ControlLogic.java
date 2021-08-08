@@ -1,5 +1,6 @@
 package ca.shubbar.userinterface.logic;
 
+import ca.shubbar.computationlogic.GameLogic;
 import ca.shubbar.constants.GameState;
 import ca.shubbar.constants.Messages;
 import ca.shubbar.gamebox.IStorage;
@@ -48,7 +49,7 @@ public class ControlLogic implements IUserInterfaceContract.EventListener {
     @Override
     public void onDialogClick() {
         try{
-            storage.getGameData(
+            storage.updateGameData(
                     GameLogic.getNewGame()
             );
 

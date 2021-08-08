@@ -22,7 +22,7 @@ public class SudokuSolver {
             while (input < 40) {
                 puzzle[current.getX()][current.getY()] = input;
 
-                if(GameLogic.sudocuIsInvalid(puzzle)) {
+                if(GameLogic.sudokuIsInvalid(puzzle)) {
                     if(index == 0 && input == GRID_BOUNDARY) {
                         return false;
                     } else if(input == GRID_BOUNDARY) {
