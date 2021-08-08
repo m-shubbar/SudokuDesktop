@@ -60,8 +60,8 @@ public class GameGenerator {
 
             int attempts = 0;
 
-            while(allocations < GRID_BOUNDARY) {
-                if(interrupts > 200 ) {
+            while (allocations < GRID_BOUNDARY) {
+                if (interrupts > 200) {
                     allocTracker.forEach(coord -> {
                         newGrid[coord.getX()][coord.getY()] = 0;
                     });
@@ -70,28 +70,29 @@ public class GameGenerator {
                     allocations = 0;
                     allocTracker.clear();
                     attempts++;
+
+
+                    // If we still stuck, nuke everything
+                    if (attempts > 500) {
+                        clearArray(newGrid);
+                        attempts = 0;
+                        value = 1;
+                    }
                 }
 
-                // If we still stuck, nuke everything
-                if(attempts > 500) {
-                    clearArray(newGrid);
-                    attempts = 0;
-                    value = 1;
-                }
-            }
+                int xCoordinate = random.nextInt(GRID_BOUNDARY);
+                int yCoordinate = random.nextInt(GRID_BOUNDARY);
 
-            int xCoordinate = random.nextInt(GRID_BOUNDARY);
-            int yCoordinate = random.nextInt(GRID_BOUNDARY);
+                if (newGrid[xCoordinate][yCoordinate] == 0) {
+                    newGrid[xCoordinate][yCoordinate] = value;
 
-            if(newGrid[xCoordinate][yCoordinate] == 0) {
-                newGrid[xCoordinate][yCoordinate] = value;
-
-                if(GameLogic.sudokuIsInvalid(newGrid)) {
-                    newGrid[xCoordinate][yCoordinate] = 0;
-                    interrupts++;
-                } else {
-                    allocTracker.add(new Coordinates(xCoordinate, yCoordinate));
-                    allocations++;
+                    if (GameLogic.sudokuIsInvalid(newGrid)) {
+                        newGrid[xCoordinate][yCoordinate] = 0;
+                        interrupts++;
+                    } else {
+                        allocTracker.add(new Coordinates(xCoordinate, yCoordinate));
+                        allocations++;
+                    }
                 }
             }
         }
